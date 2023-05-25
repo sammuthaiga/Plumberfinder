@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   # GET /users/{username}
   def show
+    @user = User.find_user
     render json: @user, status: :ok
   end
 
@@ -40,14 +41,14 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    @user = User.find_by_username!(params[:_username])
+    @user = User.find_by_email!(params[:_email])
     rescue ActiveRecord::RecordNotFound
       render json: { errors: 'User not found' }, status: :not_found
   end
 
   def user_params
     params.permit(
-      :avatar, :name, :username, :email, :password, :password_confirmation
+      :name, :email, :phonenumber, :location, :image, :password, :password_confirmation
     )
   end
 end
