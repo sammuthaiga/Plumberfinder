@@ -70,3 +70,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# Use Json Web Token (JWT) for token based authentication
+gem 'jwt'
+# Use ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1.7'
